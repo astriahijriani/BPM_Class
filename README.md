@@ -1,2 +1,4 @@
-# BPM_Class
-Repositori ini dipakai untuk menjalankan case study di kelas Business Process Management
+# Studi Kasus Manajemen Proses Bisnis
+
+Setiap kasus ada di foldernya sendiri dan berisi satu file `index.html`.
+Daftar kasus untuk mahasiswa ada di `index.html` utama (daftar `CASES`).
