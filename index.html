@@ -44,16 +44,16 @@ a.case:focus-visible{outline:3px solid #1F5FBF;outline-offset:2px}
 <script>
 /*
   CARA MENAMBAH KASUS BARU
-  1. Unggah folder kasus baru (berisi index.html) ke repository.
+  1. Unggah file HTML kasus baru ke repository (di tempat yang sama dengan file ini).
   2. Tambahkan satu baris di daftar CASES di bawah ini.
-     folder : nama folder kasus, persis sama dengan di repository
+     file   : nama file kasus, persis sama dengan di repository (misalnya mto-mebel.html)
      judul  : nama yang tampil untuk mahasiswa
      jenis  : jenis perusahaan
      status : "contoh" (ada jawaban), "tugas" (dikerjakan dan dikumpulkan), atau "tutup" (belum dibuka)
      ket    : satu kalimat keterangan
 */
 var CASES = [
-  {folder:"contoh-renyah-jaya", judul:"UD Renyah Jaya", jenis:"Make-to-stock", status:"contoh", ket:"Usaha keripik pisang dan singkong. Kasus contoh, lengkap dengan jawaban."}
+  {file:"renyah-jaya.html", judul:"UD Renyah Jaya", jenis:"Make-to-stock", status:"contoh", ket:"Usaha keripik pisang dan singkong. Kasus contoh, lengkap dengan jawaban."}
 ];
 
 var LABEL = {contoh:"Contoh, ada jawaban", tugas:"Tugas", tutup:"Belum dibuka"};
@@ -62,7 +62,7 @@ CASES.forEach(function(c){
   var li = document.createElement("li");
   var el = document.createElement(c.status==="tutup" ? "div" : "a");
   el.className = "case" + (c.status==="tutup" ? " off" : "");
-  if(c.status!=="tutup") el.href = c.folder + "/";
+  if(c.status!=="tutup") el.href = c.file;
   var b = document.createElement("b"); b.textContent = c.judul;
   var meta = document.createElement("div"); meta.className = "meta";
   [[c.jenis,""],[LABEL[c.status]||c.status, c.status]].forEach(function(t){

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kasus Cerita: UD Renyah Jaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1EA; --surface:#FFFFFF; --ink:#1F2A24; --muted:#56635A; --line:#CFD6CB;
+  --gold:#A8740A; --gold-strong:#C98E0C; --gold-soft:#F6E3AE; --red:#B8322A; --leaf:#2F6B4F; --leaf-soft:#DCEBE1;
+  --rule:#A9C2DE; --margin:#E08A8A; --paper:#FFFEF8;
+  --nota-white:#FFFFFF; --nota-pink:#F7D5DC; --nota-yellow:#F6E7A1;
+  --focus:#1F5FBF;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --hand:"Kalam", "Comic Sans MS", cursive;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A16; --surface:#1D251F; --ink:#E8EDE6; --muted:#A3B0A6; --line:#34413A;
+    --gold:#E3AE3A; --gold-strong:#E3AE3A; --gold-soft:#4A3B12; --red:#E0675E; --leaf:#7FC4A0; --leaf-soft:#223A2D;
+    --rule:#33475E; --margin:#7A3B3B; --paper:#1F2621;
+    --nota-white:#2A332D; --nota-pink:#4A2A31; --nota-yellow:#4A421C; --focus:#8AB4FF;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A16; --surface:#1D251F; --ink:#E8EDE6; --muted:#A3B0A6; --line:#34413A;
+  --gold:#E3AE3A; --gold-strong:#E3AE3A; --gold-soft:#4A3B12; --red:#E0675E; --leaf:#7FC4A0; --leaf-soft:#223A2D;
+  --rule:#33475E; --margin:#7A3B3B; --paper:#1F2621;
+  --nota-white:#2A332D; --nota-pink:#4A2A31; --nota-yellow:#4A421C; --focus:#8AB4FF;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+img{max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:760px;margin:0 auto;padding:10px 20px 8px}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.brand b{white-space:nowrap;font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em}
+.brand span{color:var(--muted);font-size:14px;text-align:right}
+.track{display:flex;gap:3px;margin-top:8px}
+.track button{flex:1;height:8px;border:0;border-radius:2px;background:var(--line);padding:0;cursor:pointer}
+.track button.done{background:var(--leaf)}
+.track button.here{background:var(--gold-strong)}
+.track button.gap{margin-left:8px}
+.track button:disabled{cursor:not-allowed}
+
+main{max-width:760px;margin:0 auto;padding:28px 20px 120px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.015em}
+h1{font-size:clamp(34px,7vw,56px);font-weight:800;margin:0 0 12px}
+h2{font-size:clamp(26px,5vw,36px);font-weight:800;margin:4px 0 6px}
+h3{font-size:21px;font-weight:700;margin:36px 0 10px}
+p{margin:0 0 14px;max-width:68ch}
+.where{color:var(--muted);font-size:15px;margin-bottom:22px}
+.lead{font-size:19px}
+
+/* hero */
+.hero{padding:10px 0 8px}
+.chip-pack{display:inline-block;background:var(--gold-soft);border:2px solid var(--gold-strong);border-radius:14px 14px 6px 6px;padding:14px 18px 12px;margin-bottom:20px;transform:rotate(-2deg)}
+.chip-pack small{display:block;font-family:var(--hand);font-size:16px;color:var(--ink)}
+.chip-pack strong{font-family:var(--display);font-weight:800;font-size:26px;color:var(--red)}
+
+/* story */
+.nar{margin:0 0 16px}
+.say{display:flex;gap:10px;margin:0 0 14px;align-items:flex-start}
+.say .av{flex:0 0 38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:14px;color:#fff}
+.say .bub{background:var(--surface);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:9px 14px;max-width:62ch}
+.say .who{display:block;font-size:13px;font-weight:700;color:var(--muted)}
+.say.me{flex-direction:row-reverse}
+.say.me .bub{background:var(--leaf-soft);border-radius:16px 4px 16px 16px}
+.steps{list-style:none;margin:0 0 18px;padding:0;border-left:3px solid var(--gold-strong)}
+.steps>li{position:relative;padding:0 0 14px 22px}
+.steps>li::before{content:attr(data-n);position:absolute;left:-15px;top:0;width:27px;height:27px;border-radius:50%;background:var(--gold-strong);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.steps .when{font-weight:700;color:var(--red)}
+.steps ul{margin:8px 0 0;padding-left:18px}
+
+/* notebook */
+.note{background:var(--paper);border:1px solid var(--line);border-radius:3px;margin:26px 0;padding:14px 18px 18px 52px;position:relative;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);background-position:0 44px}
+.note::before{content:"";position:absolute;top:0;bottom:0;left:38px;border-left:2px solid var(--margin)}
+.note h4{font-family:var(--hand);font-weight:700;font-size:22px;margin:0 0 10px;color:var(--leaf)}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-size:15px;background:transparent}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tbl th{font-weight:700}
+
+/* questions */
+.qs{counter-reset:q;margin:0;padding:0;list-style:none}
+.q{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--leaf);border-radius:6px;padding:14px 16px;margin:0 0 14px}
+.q label{display:block;font-weight:700;margin-bottom:8px}
+.q textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:6px;padding:10px;background:var(--bg);resize:vertical}
+.hintbtn{background:none;border:0;padding:0;color:var(--leaf);font-weight:700;cursor:pointer;text-decoration:underline;font-size:15px;margin-top:6px}
+.hint{font-size:15px;color:var(--muted);margin:6px 0 0}
+.term{background:none;border:0;padding:0 1px;font-weight:700;color:inherit;border-bottom:2px dotted var(--gold-strong);cursor:help}
+.def{display:block;font-weight:400;font-size:15px;background:var(--gold-soft);border-radius:6px;padding:8px 10px;margin:6px 0}
+
+/* model answers */
+.model{margin-top:10px;border:1px solid var(--leaf);border-radius:6px;background:var(--leaf-soft)}
+.model summary{cursor:pointer;font-weight:700;color:var(--leaf);padding:8px 12px;font-size:15px}
+.model-body{padding:0 12px 12px;font-size:15px}
+.model-body p{margin:6px 0}
+.model-body h4{font-family:var(--display);margin:14px 0 6px}
+.model-body .tbl table{background:var(--surface)}
+details.model:has(.land), details.model:has(.tbl){margin-top:30px}
+/* quick check */
+.check{background:var(--surface);border:2px dashed var(--gold-strong);border-radius:10px;padding:16px 18px;margin:26px 0}
+.check h3{margin:0 0 8px;font-size:19px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+.opt{border:2px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 14px;cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--ink)}
+.opt.right{border-color:var(--leaf);background:var(--leaf-soft)}
+.opt.wrong{border-color:var(--red)}
+.sortrow{display:grid;grid-template-columns:minmax(120px,1fr) auto;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.fb{margin:10px 0 0;padding:10px 12px;border-radius:6px;font-size:15px}
+.fb.ok{background:var(--leaf-soft)}
+.fb.no{background:var(--nota-pink)}
+
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{border:2px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.gatemsg{color:var(--muted);font-size:14px;flex-basis:100%;text-align:right;margin:0}
+
+/* forms */
+.fields{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:18px 0}
+.fields label{font-weight:700;font-size:15px;display:block}
+.fields input{width:100%;border:1px solid var(--line);border-radius:6px;padding:9px 10px;background:var(--surface)}
+
+/* editable tables */
+.ed{overflow-x:auto;margin:14px 0}
+.ed table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+.ed th{text-align:left;padding:6px;font-size:14px;border-bottom:2px solid var(--ink)}
+.ed td{padding:4px;border-bottom:1px solid var(--line);vertical-align:top}
+.ed tr.ex td{font-style:italic;color:var(--muted);padding:8px 6px;background:var(--gold-soft)}
+.ed input,.ed select,.ed textarea{width:100%;border:1px solid var(--line);border-radius:5px;padding:6px 7px;background:var(--surface);font-size:15px}
+.ed textarea{min-height:40px;resize:vertical}
+.del{border:0;background:none;color:var(--red);cursor:pointer;font-size:20px;line-height:1;padding:4px 8px}
+.add{border:2px dashed var(--line);background:none;border-radius:8px;padding:8px 14px;cursor:pointer;font-weight:700;color:var(--leaf)}
+.row-actions{display:flex;gap:4px}
+.small{font-size:14px;color:var(--muted)}
+.bigtext{width:100%;min-height:110px;border:1px solid var(--line);border-radius:6px;padding:10px;background:var(--surface)}
+
+/* matrix */
+.mx td.cell{text-align:center}
+.mx button.x{width:40px;height:34px;border:1px solid var(--line);border-radius:5px;background:var(--surface);cursor:pointer;font-weight:800;font-family:var(--hand);font-size:22px;color:var(--red)}
+
+/* landscape */
+.land{border:2px solid var(--ink);border-radius:6px;overflow:hidden;margin:16px 0}
+.band{padding:12px 14px 14px;border-top:2px solid var(--ink)}
+.band:first-child{border-top:0}
+.band h4{margin:0 0 8px;font-family:var(--display);font-size:16px}
+.band .cards{display:flex;flex-wrap:wrap;gap:8px}
+.band .card{border:1px solid var(--ink);border-radius:4px;padding:6px 10px;font-size:14px;background:var(--surface)}
+.band.m{background:var(--nota-white)}
+.band.i{background:var(--nota-yellow)}
+.band.p{background:var(--nota-pink)}
+.band .empty{font-size:14px;color:var(--muted)}
+
+/* ranking */
+.rank{list-style:none;padding:0;margin:12px 0}
+.rank li{display:grid;grid-template-columns:minmax(0,1fr) 120px 32px;gap:10px;align-items:center;padding:5px 0;font-size:15px}
+.rank .bar{height:12px;background:var(--line);border-radius:2px;overflow:hidden}
+.rank .bar i{display:block;height:100%;background:var(--gold-strong)}
+.ecard{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin:0 0 10px}
+.ecard.ex{background:var(--gold-soft);font-style:italic}
+.ecard textarea{width:100%;min-height:52px;margin-top:8px;border:1px solid var(--line);border-radius:5px;padding:6px 8px;background:var(--bg)}
+.erow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:15px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;border-left:1px solid var(--line);background:var(--surface);width:30px;height:30px;cursor:pointer;font-size:14px}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);font-weight:700}
+
+/* process map */
+.pmap{display:flex;flex-wrap:wrap;gap:6px 0;align-items:stretch;margin:14px 0}
+.pstep{display:flex;align-items:center}
+.pbox{border:2px solid var(--ink);border-radius:6px;background:var(--surface);padding:8px 10px;width:140px;font-size:14px}
+.pbox small{display:block;color:var(--muted);border-top:1px dashed var(--line);margin-top:6px;padding-top:4px}
+.parr{width:22px;text-align:center;font-weight:800;color:var(--gold)}
+
+.summary{width:100%;min-height:280px;font-family:var(--body);font-size:14px;border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--surface)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:700;display:none;z-index:40}
+.warn{background:var(--nota-pink);border-radius:6px;padding:10px 12px;font-size:15px}
+@media (prefers-reduced-motion:no-preference){
+  .enter{animation:enter .35s ease-out}
+  @keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .note{padding-left:44px}
+  .note::before{left:32px}
+  .pbox{width:120px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><b>UD Renyah Jaya</b><span><a id="home" href="index.html" hidden style="color:var(--leaf);font-weight:700;margin-right:10px">Semua kasus</a><span id="where"></span></span></div>
+    <div class="track" id="track" aria-label="Kemajuan"></div>
+  </div>
+</header>
+<main id="app"></main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- glossary ---------- */
+var GLOS = {
+  "proses bisnis":"Rangkaian kegiatan dari awal sampai akhir yang menghasilkan sesuatu untuk seseorang. Contoh: dari pelanggan memesan sampai pelanggan membayar.",
+  "make-to-stock":"Barang dibuat dulu, disimpan, baru dijual. Contoh: toko roti membuat roti sebelum pembeli datang.",
+  "flow object":"Benda yang berpindah dari meja ke meja dalam satu proses. Contoh: nota pesanan, satu wajan gorengan, satu kiriman pisang.",
+  "case type":"Jenis kasus yang ditangani dengan cara berbeda. Contoh: pembeli tunai vs pembeli yang boleh berutang.",
+  "fungsi":"Pekerjaan yang dilakukan usaha, biasanya sesuai bagian. Contoh: menjual, menggoreng, membeli bahan, menagih.",
+  "proses inti":"Proses yang langsung menghasilkan barang yang dibayar pelanggan.",
+  "proses pendukung":"Proses yang membantu proses inti berjalan, misalnya menggaji karyawan atau merawat mesin.",
+  "proses manajemen":"Proses untuk mengatur dan merencanakan usaha, misalnya menyusun rencana produksi.",
+  "guideline 2":"Guideline 2 (multiplisitas): jika sebagian kegiatan dikerjakan satu per satu dan sebagian lain sekaligus untuk banyak kasus, proses bisa dipisah.",
+  "guideline 3":"Guideline 3 (status transaksi): tahap inisiasi, negosiasi, eksekusi (menyerahkan barang), dan penerimaan (membayar) bisa menjadi proses terpisah.",
+  "guideline 4":"Guideline 4 (waktu): jika bagian proses berjalan dengan irama berbeda (per pesanan, mingguan, bulanan), proses bisa dipisah.",
+  "feasibility":"Seberapa mungkin proses berhasil diperbaiki. Dipengaruhi dukungan orang, dana, dan ketergantungan pada pihak luar.",
+  "importance":"Seberapa penting proses bagi tujuan usaha.",
+  "dysfunction":"Seberapa bermasalah proses saat ini."
+};
+
+/* ---------- people ---------- */
+var PEOPLE = {
+  "Dina":{c:"#2F6B4F",i:"Di"}, "Bu Wati":{c:"#B8322A",i:"BW"}, "Mas Rian":{c:"#1F5FBF",i:"MR"},
+  "Bu Siti":{c:"#A8740A",i:"BS"}, "Pak Udin":{c:"#6B5B95",i:"PU"}, "Pak Harto":{c:"#7A4E2D",i:"PH"},
+  "Pak Darto":{c:"#44546A",i:"PD"}, "Mbak Lia":{c:"#A23E78",i:"ML"}, "Mbak Nia":{c:"#1C7C7D",i:"MN"}
+};
+
+/* ---------- scenes ---------- */
+var SCENES = [
+{ id:"a1", title:"Bertemu Pemilik Usaha", where:"Senin pagi, ruang kantor",
+  blocks:[
+   ["n","Dina, mahasiswa Sistem Informasi, mulai magang di UD Renyah Jaya, sebuah usaha keripik di pinggir kota. Bangunannya terdiri dari dapur produksi, gudang kecil, dan satu ruang kantor. Bau pisang goreng tercium dari depan pagar."],
+   ["s","Bu Wati","Usaha ini saya mulai tahun 2015 dari dapur rumah. Sekarang karyawan kami 35 orang. Omzet setahun sekitar 3 miliar rupiah."],
+   ["s","Dina","Produknya apa saja, Bu?"],
+   ["s","Bu Wati","Keripik pisang dan keripik singkong. Pisangnya ada rasa original, balado, dan cokelat. Singkongnya original dan pedas. Semua ada ukuran 100 gram dan 250 gram. Jadi totalnya 10 macam barang."],
+   ["s","Dina","Keripiknya dibuat kalau ada pesanan, atau dibuat dulu?"],
+   ["s","Bu Wati","Dibuat dulu, disimpan di gudang, baru dijual. Keripik tahan 4 bulan, jadi kami bisa simpan stok. Kalau menunggu pesanan dulu, pelanggan tidak mau menunggu."],
+   ["s","Bu Wati","Usaha kami sebenarnya laku. Tapi saya pusing. Ada barang yang sering kosong, ada yang menumpuk sampai kedaluwarsa. Toko oleh-oleh telat bayar. Reseller protes barangnya lama dikirim. Saya ingin tahu sebenarnya masalahnya di mana."],
+   ["s","Dina","Rencana ke depan bagaimana, Bu?"],
+   ["s","Bu Wati","Toko oleh-oleh itu pelanggan utama kami, harus dijaga. Tapi saya ingin reseller tumbuh dua kali lipat dalam dua tahun, karena mereka bayar di muka. Uangnya terbatas, jadi tahun ini saya hanya sanggup membiayai satu perbaikan dulu."],
+   ["n","Bu Wati menyerahkan daftar karyawan kepada Dina."]
+  ],
+  notes:[{title:"Orang-orang di UD Renyah Jaya", head:["Nama","Jabatan","Anak buah","Pekerjaan utama"], rows:[
+   ["Bu Wati","Pemilik","-","Memutuskan hal penting, menetapkan harga, membuat rasa baru"],
+   ["Mas Rian","Admin penjualan","-","Menerima pesanan toko oleh-oleh dan reseller"],
+   ["Mbak Nia","Admin online","-","Mengurus toko di marketplace"],
+   ["Bu Siti","Kepala dapur","22 orang","Mengatur produksi dan memeriksa rasa"],
+   ["Pak Harto","Bagian pembelian","-","Membeli pisang, singkong, minyak, bumbu, kemasan"],
+   ["Pak Darto","Kepala gudang","3 staf, 1 sopir","Menyimpan, menyiapkan, dan mengantar barang"],
+   ["Mbak Lia","Keuangan","1 staf","Nota, penagihan, gaji, pembayaran"],
+   ["Pak Udin","Teknisi","-","Merawat mesin penggoreng dan peniris"]]}],
+  qs:[
+   ["Apakah UD Renyah Jaya termasuk {{make-to-stock}}? Kalimat mana yang membuktikannya?","Cari kalimat Bu Wati tentang kapan keripik dibuat."],
+   ["Tulis tiga keluhan Bu Wati.","Keluhan ini nanti dipakai untuk menilai proses mana yang bermasalah ({{dysfunction}})."],
+   ["Apa tujuan Bu Wati untuk dua tahun ke depan?","Tujuan ini nanti dipakai untuk menilai proses mana yang penting ({{importance}})."],
+   ["Dari tabel orang-orang, tebak minimal lima {{fungsi}} yang ada di usaha ini.","Lihat kolom pekerjaan utama. Satu jabatan bisa punya lebih dari satu fungsi."]
+  ],
+  check:{type:"mc", q:"UD Renyah Jaya termasuk jenis usaha apa?", opts:["Make-to-stock","Make-to-order"], a:0,
+   why:"Benar, make-to-stock. Bu Wati berkata keripik \"dibuat dulu, disimpan di gudang, baru dijual\"."}
+},
+{ id:"a2", title:"Di Meja Penjualan", where:"Senin siang, meja Mas Rian",
+  blocks:[
+   ["n","Dina pindah ke meja Mas Rian, yang sedang membalas pesan WhatsApp sambil menulis di buku tebal."],
+   ["s","Dina","Keripik kita dijual ke siapa saja, Mas?"],
+   ["s","Mas Rian","Ada tiga, Mbak. Pertama, toko oleh-oleh. Ada 25 toko langganan. Mereka pesan lewat WhatsApp ke saya, biasanya seminggu sekali. Barang kita antar pakai mobil sendiri setiap Selasa dan Jumat. Mereka boleh bayar belakangan, 14 hari setelah barang diterima. Toko oleh-oleh ini 60% dari penjualan kita."],
+   ["s","Dina","Yang kedua?"],
+   ["s","Mas Rian","Reseller. Mereka orang perorangan yang jual lagi, biasanya lewat media sosial. Ada sekitar 60 reseller. Mereka isi Google Form untuk pesan, lalu harus transfer dulu. Kalau uang sudah masuk, baru barang kita kirim lewat ekspedisi. Reseller 25% penjualan."],
+   ["s","Dina","Yang ketiga pasti online ya?"],
+   ["s","Mas Rian","Betul. Toko kita di marketplace, dipegang Mbak Nia. Pembelinya konsumen biasa, belinya satu dua bungkus. Mereka bayar ke marketplace, nanti marketplace yang transfer ke kita dua minggu sekali. Kurir menjemput paket setiap sore. Marketplace 15% penjualan."],
+   ["s","Dina","Kalau rasa balado dan cokelat, cara jualnya beda tidak?"],
+   ["s","Mas Rian","Sama saja, Mbak. Rasa apa pun, ukuran berapa pun, cara pesan, cara kirim, cara bayarnya sama. Bedanya cuma harga di daftar harga."],
+   ["s","Dina","Mas mencatat pesanan di mana?"],
+   ["s","Mas Rian","Pesanan toko oleh-oleh saya tulis di buku ini. Pesanan reseller masuk ke Google Sheet dari Google Form. Stok barang saya lihat di file Excel dari gudang, tapi file itu baru diperbarui setiap sore. Jadi kadang saya bilang ada, ternyata sudah habis."]
+  ],
+  notes:[{title:"Tiga cara menjual", head:["Hal","Toko oleh-oleh","Reseller","Marketplace"], rows:[
+   ["Jumlah pelanggan","25 toko","Sekitar 60 orang","Konsumen umum"],
+   ["Porsi penjualan","60%","25%","15%"],
+   ["Cara memesan","WhatsApp ke Mas Rian","Google Form","Klik di marketplace"],
+   ["Kapan bayar","14 hari setelah barang diterima","Transfer dulu sebelum dikirim","Dibayar ke marketplace, dicairkan dua minggu sekali"],
+   ["Cara kirim","Mobil sendiri, Selasa dan Jumat","Ekspedisi","Kurir marketplace setiap sore"],
+   ["Yang mengurus","Mas Rian","Mas Rian","Mbak Nia"]]}],
+  qs:[
+   ["Apakah rasa keripik membuat cara kerja berbeda? Kutip kalimat buktinya. Kalau tidak berbeda, apakah rasa boleh dipakai sebagai {{case type}}?","Case type hanya dibuat dari hal yang membuat cara kerjanya berbeda."],
+   ["Apakah cara menjual (toko oleh-oleh, reseller, marketplace) membuat cara kerja berbeda? Sebutkan minimal dua perbedaan.","Bandingkan baris-baris di tabel catatan Dina."],
+   ["Tulis case type yang menurut Anda paling tepat untuk UD Renyah Jaya.","Pilih satu properti yang benar-benar membuat cara kerja berbeda, lalu tulis nilai-nilainya."],
+   ["Benda apa yang berpindah dari Mas Rian ke gudang? Ini kandidat {{flow object}} pertama Anda.","Pikirkan apa yang Mas Rian serahkan agar gudang tahu barang apa yang harus disiapkan."]
+  ],
+  check:{type:"sort", q:"Mana yang membuat cara kerja berbeda?", items:[["Rasa keripik",1],["Ukuran kemasan",1],["Cara menjual (saluran)",0]], labels:["Berbeda","Sama saja"],
+   why:"Hanya saluran penjualan yang membuat cara pesan, bayar, dan kirim berbeda. Rasa dan ukuran \"sama saja\", jadi bukan case type."}
+},
+{ id:"a3", title:"Di Dapur Produksi", where:"Selasa pagi, dapur",
+  blocks:[
+   ["n","Bu Siti mengajak Dina berkeliling dapur. Di satu sisi, belasan pekerja mengupas dan mengiris pisang. Di sisi lain, empat wajan besar mengepul."],
+   ["s","Bu Siti","Urutannya begini, Mbak. Pisang dikupas, diiris tipis, digoreng, ditiriskan di mesin peniris, diberi bumbu, didinginkan, lalu dikemas. Satu kali goreng itu 10 kilo pisang mentah, jadinya kira-kira 3,5 kilo keripik. Satu kali goreng kami sebut satu 'wajan'. Sehari bisa 30 wajan."],
+   ["s","Dina","Bagaimana Ibu tahu besok harus membuat rasa apa?"],
+   ["s","Bu Siti","Setiap Sabtu siang, saya, Bu Wati, dan Mas Rian rapat sebentar, setengah jam. Kami lihat stok di gudang dan pesanan minggu lalu, lalu kami tentukan minggu depan buat apa saja. Targetnya stok cukup untuk dua minggu. Hasil rapat saya tulis di papan tulis dapur."],
+   ["s","Dina","Apakah jadwal itu sering berubah?"],
+   ["s","Bu Siti","Sering sekali. Kalau ada toko oleh-oleh pesan banyak mendadak, Mas Rian datang minta saya buat balado hari itu juga. Padahal ganti bumbu dari cokelat ke balado harus cuci wajan dulu, hampir satu jam."],
+   ["s","Dina","Mutu keripik diperiksa di mana, Bu?"],
+   ["s","Bu Siti","Setiap wajan saya cicipi dan saya cek kerenyahannya. Kalau gosong atau remuk, dipisah. Keripik remuk kami jual murah per kilo ke pedagang pasar, tanpa merek. Setiap kemasan diberi cap tanggal produksi."],
+   ["n","Di dinding dapur, Dina melihat jadwal perawatan mesin. Pak Udin seharusnya membersihkan dan memeriksa mesin penggoreng dan peniris setiap awal bulan. Tiga bulan terakhir kolomnya kosong."],
+   ["s","Pak Udin","Dapur terlalu sibuk, mesinnya tidak boleh berhenti."]
+  ],
+  notes:[{title:"Dapur", head:["Hal","Keterangan"], rows:[
+   ["Satuan produksi","1 wajan = 10 kg pisang mentah = sekitar 3,5 kg keripik"],
+   ["Kapasitas","Sekitar 30 wajan per hari, 6 hari per minggu"],
+   ["Perencanaan","Rapat setiap Sabtu (Bu Wati, Bu Siti, Mas Rian), target stok 2 minggu"],
+   ["Perubahan jadwal","Sering, karena pesanan mendadak toko oleh-oleh"],
+   ["Ganti rasa","Sekitar 1 jam untuk mencuci wajan"],
+   ["Pemeriksaan mutu","Bu Siti mencicipi setiap wajan; keripik remuk dijual murah ke pedagang pasar"],
+   ["Perawatan mesin","Seharusnya setiap awal bulan, 3 bulan terakhir tidak dilakukan"]]}],
+  qs:[
+   ["Satu wajan keripik bisa dipakai untuk memenuhi berapa pesanan? Apa artinya bagi pemisahan proses \"membuat keripik\" dan \"menjual keripik\"?","Lihat {{guideline 2}}."],
+   ["Rapat Sabtu terjadi seminggu sekali, sedangkan pesanan datang kapan saja. Guideline mana yang cocok untuk memisahkan perencanaan dari penjualan?","Lihat {{guideline 4}}."],
+   ["Apakah menjual keripik remuk ke pedagang pasar perlu dijadikan case type? Jelaskan pendapat Anda.","Pertimbangkan seberapa besar dan seberapa penting kegiatan ini."],
+   ["Apakah perawatan mesin termasuk {{proses inti}}, {{proses pendukung}}, atau {{proses manajemen}}?","Apakah pelanggan membayar untuk perawatan mesin?"]
+  ],
+  check:{type:"mc", q:"Satu wajan keripik (3,5 kg) biasanya dipakai untuk...", opts:["Satu pesanan","Banyak pesanan"], a:1,
+   why:"Benar. Satu wajan dibagi ke banyak bungkus dan banyak pelanggan. Karena jumlahnya berubah (satu wajan untuk banyak pesanan), \"membuat keripik\" dipisah dari \"menjual keripik\" (Guideline 2)."}
+},
+{ id:"a4", title:"Pembelian Bahan dan Gudang", where:"Selasa siang, halaman belakang dan gudang",
+  blocks:[
+   ["n","Siang harinya, Dina menemui Pak Harto di halaman belakang. Sebuah pikap baru saja menurunkan tandan pisang kepok."],
+   ["s","Pak Harto","Pisang saya beli dari 8 petani langganan, setiap Senin dan Kamis. Jumlahnya sesuai rencana dari rapat Sabtu. Pisang harus diolah paling lambat dua hari, kalau tidak terlalu matang dan tidak bisa jadi keripik. Setiap kiriman saya timbang dan saya cek, pisang yang terlalu matang saya tolak. Petani dibayar tunai saat itu juga. Singkong saya beli dari 2 petani dengan cara yang sama."],
+   ["s","Dina","Bahan lain bagaimana, Pak?"],
+   ["s","Pak Harto","Minyak goreng, gula, dan bumbu saya beli setiap minggu di toko grosir, bayar tunai. Yang repot itu plastik kemasan. Plastiknya dicetak khusus dengan merek kita, jadi harus pesan ke percetakan minimal 5.000 lembar per desain. Jadinya dua minggu, dan harus bayar uang muka 50%."],
+   ["s","Dina","Kapan Bapak memesan kemasan?"],
+   ["s","Pak Harto","Kalau saya lihat tumpukannya sudah tipis. Tidak ada catatan pasti. Tahun lalu dua kali kemasan habis, dapur berhenti mengemas selama dua hari."],
+   ["n","Dina lalu ke gudang barang jadi. Pak Darto sedang menulis di buku besar."],
+   ["s","Pak Darto","Semua keripik yang sudah dikemas masuk ke sini, Mbak. Setiap barang masuk dan keluar saya tulis di buku ini. Setiap sore staf saya menyalin ke Excel, lalu mengirim filenya ke Mas Rian."],
+   ["s","Dina","Barang untuk pelanggan disiapkan bagaimana?"],
+   ["s","Pak Darto","Untuk toko oleh-oleh, Mas Rian kasih nota pengiriman. Kami ambil barang, yang tanggal produksinya paling lama dulu. Kami susun di mobil box, lalu sopir antar setiap Selasa dan Jumat. Untuk reseller, Mas Rian kasih daftar reseller yang sudah transfer. Kami kemas dalam kardus, lalu kami antar ke kantor ekspedisi setiap siang. Untuk marketplace, Mbak Nia punya rak kecil sendiri. Setiap Rabu dia minta tambahan barang dari gudang."],
+   ["s","Dina","Kalau ada sistem baru untuk mencatat stok, bagaimana, Pak?"],
+   ["s","Pak Darto","Saya sudah 10 tahun pakai buku, Mbak. Belum pernah hilang. Kalau pakai aplikasi, saya takut malah repot."]
+  ],
+  notes:[{title:"Bahan dan gudang", head:["Bahan atau barang","Dari siapa","Kapan","Cara bayar","Catatan"], rows:[
+   ["Pisang kepok","8 petani","Senin dan Kamis","Tunai","Harus diolah maksimal 2 hari; yang terlalu matang ditolak"],
+   ["Singkong","2 petani","Senin dan Kamis","Tunai","Sama dengan pisang"],
+   ["Minyak, gula, bumbu","Toko grosir","Setiap minggu","Tunai","-"],
+   ["Plastik kemasan bermerek","Percetakan","Kalau stok terlihat tipis","Uang muka 50%","Minimal 5.000 lembar, jadi 2 minggu, pernah habis 2 kali"],
+   ["Keripik jadi","Dapur","Setiap hari","-","Dicatat di buku, disalin ke Excel setiap sore"]]}],
+  qs:[
+   ["Tulis semua benda yang berpindah di adegan ini. Mana yang berbeda dari benda di Adegan 2 dan 3?","Contoh: satu kiriman pisang dari petani."],
+   ["Pembelian pisang dan pembelian kemasan: sebaiknya satu proses atau dua proses?","Bandingkan pemasok, waktu tunggu, cara bayar, dan seberapa sering."],
+   ["Tulis perbedaan cara menyiapkan barang untuk toko oleh-oleh, reseller, dan marketplace, masing-masing satu kalimat.","Perhatikan kapan barang disiapkan dan siapa yang mengantar."],
+   ["Apa sikap Pak Darto terhadap perubahan? Apa pengaruhnya pada {{feasibility}}?","Sikap orang yang terlibat menentukan seberapa mudah proses diperbaiki."]
+  ],
+  check:{type:"mc", q:"Pembelian pisang dan pembelian kemasan sebaiknya...", opts:["Satu proses \"membeli bahan\"","Dua proses terpisah"], a:1,
+   why:"Benar. Pemasok, irama (Senin dan Kamis vs tidak rutin), waktu tunggu, dan cara bayarnya berbeda, jadi lebih mudah dikelola sebagai dua proses."}
+},
+{ id:"a5", title:"Mengikuti Satu Pesanan", where:"Senin sampai dua minggu kemudian",
+  blocks:[
+   ["n","Dina ingin melihat satu pesanan secara utuh. Ia memilih pesanan dari Toko Oleh-Oleh Sari Rasa, yang masuk hari Senin. Dina mencatat setiap langkah dan siapa yang mengerjakannya."],
+   ["steps",[
+     ["Senin pagi","Pemilik Toko Sari Rasa mengirim WhatsApp ke Mas Rian: 40 bungkus keripik pisang balado 250 g dan 30 bungkus keripik singkong pedas 100 g."],
+     ["","Mas Rian menulis pesanan itu di buku pesanan."],
+     ["","Mas Rian bertanya kepada Mbak Lia apakah Toko Sari Rasa masih punya nota yang belum dibayar lebih dari 30 hari.",["Jika ada, Mas Rian melapor ke Bu Wati. Bu Wati biasanya meminta toko melunasi dulu, dan pesanan ditunda sampai toko membayar.","Jika tidak ada, pesanan lanjut. Toko Sari Rasa tidak punya tunggakan."]],
+     ["","Mas Rian membuka file Excel stok dari gudang. Karena file itu diperbarui kemarin sore, ia menelepon Pak Darto untuk memastikan."],
+     ["","Pak Darto memeriksa rak: keripik singkong pedas cukup, tetapi keripik pisang balado 250 g hanya ada 25 bungkus."],
+     ["","Mas Rian menelepon Toko Sari Rasa dan menawarkan dua pilihan: dikirim 25 bungkus dulu dan sisanya menyusul minggu depan, atau menunggu sampai lengkap. Toko memilih dikirim dulu."],
+     ["","Mas Rian membuat nota pengiriman rangkap tiga (putih untuk toko, merah untuk gudang, kuning untuk keuangan) dan menyerahkannya ke gudang. Sisa 15 bungkus ia catat di halaman \"kurang kirim\" di bukunya."],
+     ["Selasa pagi","Staf gudang mengambil barang, mendahulukan yang tanggal produksinya paling lama, lalu memuatnya ke mobil box bersama pesanan toko lain."],
+     ["","Sopir mengantar ke Toko Sari Rasa. Pemilik toko menghitung barang dan menandatangani nota. Dua bungkus robek, jadi dikembalikan ke sopir dan dicatat di nota."],
+     ["Selasa sore","Sopir menyerahkan nota bertanda tangan kepada Mbak Lia."],
+     ["Rabu","Mbak Lia membuat faktur berdasarkan barang yang benar-benar diterima (dikurangi 2 bungkus robek), mencatat utang Toko Sari Rasa di buku piutang, dan menulis jatuh tempo 14 hari lagi."],
+     ["Dua minggu kemudian","Pada tanggal jatuh tempo, Mbak Lia mengirim tagihan lewat WhatsApp."],
+     ["","Setiap Jumat, Mbak Lia mencocokkan mutasi rekening bank dengan buku piutang untuk semua toko sekaligus.",["Jika pembayaran sudah masuk, faktur ditandai lunas.","Jika 7 hari setelah jatuh tempo belum ada pembayaran, Mbak Lia meminta Mas Rian datang menagih langsung ke toko."]]
+   ]],
+   ["n","Toko Sari Rasa baru membayar 26 hari setelah barang diterima, setelah Mas Rian datang menagih. Rata-rata toko oleh-oleh memang membayar sekitar 26 hari, padahal jatuh temponya 14 hari."]
+  ],
+  notes:[{title:"Dokumen yang dipakai", head:["Dokumen","Dibuat oleh","Dipakai oleh"], rows:[
+   ["Pesan WhatsApp","Toko oleh-oleh","Mas Rian"],["Buku pesanan","Mas Rian","Mas Rian"],["File Excel stok","Staf gudang","Mas Rian"],
+   ["Nota pengiriman (3 rangkap)","Mas Rian","Gudang, sopir, toko, Mbak Lia"],["Faktur","Mbak Lia","Toko oleh-oleh"],
+   ["Buku piutang","Mbak Lia","Mbak Lia, Bu Wati"],["Mutasi rekening bank","Bank","Mbak Lia"]]}],
+  qs:[
+   ["Siapa saja yang terlibat? Mana orang dalam UD Renyah Jaya, dan mana pihak luar?","Pihak luar tidak bekerja untuk Bu Wati."],
+   ["Di langkah mana ada keputusan \"jika ... maka ...\"? Tulis setiap keputusan sebagai pertanyaan ya/tidak.","Contoh: \"Apakah toko punya tunggakan lebih dari 30 hari?\" Masih ada beberapa lagi."],
+   ["Langkah 1-11 dikerjakan per pesanan, sedangkan langkah 13 setiap Jumat untuk semua toko. Apa artinya menurut {{guideline 2}} dan {{guideline 4}}?","Satu per satu vs sekaligus; per pesanan vs mingguan."],
+   ["Pengiriman barang (langkah 8-9) dan penagihan (langkah 12-13) ada di tahap transaksi yang berbeda. Sebutkan tahapnya menurut {{guideline 3}}.","Tahapnya: inisiasi, negosiasi, eksekusi, penerimaan."],
+   ["Apa yang terjadi dengan sisa 15 bungkus yang kurang kirim? Apakah alurnya jelas?","Siapa yang mengingatkan dapur, dan kapan sisanya dikirim?"]
+  ],
+  check:{type:"mc", q:"Mbak Lia mencocokkan pembayaran setiap Jumat untuk semua toko sekaligus. Ini petunjuk untuk...", opts:["Guideline 2 dan 4","Guideline 5 (lokasi)","Tidak ada guideline"], a:0,
+   why:"Benar. Dikerjakan sekaligus untuk banyak toko (Guideline 2) dan dengan irama mingguan (Guideline 4), sehingga pencocokan pembayaran bisa menjadi proses sendiri."}
+},
+{ id:"a6", title:"Keuangan dan Catatan Akhir", where:"Jumat, meja keuangan",
+  blocks:[
+   ["n","Di hari terakhir pengamatan, Dina duduk bersama Mbak Lia."],
+   ["s","Dina","Selain menagih toko oleh-oleh, apa lagi pekerjaan Mbak?"],
+   ["s","Mbak Lia","Banyak. Untuk reseller, saya cek mutasi bank beberapa kali sehari. Kalau transfer reseller sudah masuk, saya centang di Google Sheet supaya Mas Rian tahu boleh dikirim. Tapi kalau saya sibuk, baru sempat cek besoknya. Reseller sering protes: janjinya dikirim besok, kenyataannya 3 sampai 4 hari setelah transfer."],
+   ["s","Dina","Untuk marketplace?"],
+   ["s","Mbak Lia","Setiap dua minggu marketplace transfer uang. Saya cocokkan dengan laporan penjualan dari Mbak Nia. Lalu setiap Sabtu saya bayar gaji mingguan karyawan dapur. Setiap akhir bulan saya buat laporan laba rugi untuk Bu Wati."],
+   ["s","Mbak Nia","Stok di marketplace saya ubah manual setiap pagi. Kadang sudah habis tapi di marketplace masih terlihat ada. Bulan lalu 25 pesanan terpaksa saya batalkan. Nilai toko kita jadi turun."],
+   ["s","Bu Wati","Setahun sekali saya membuat rasa baru. Saya coba resep di dapur, minta pendapat beberapa toko, lalu kalau cocok kami pesan desain kemasan baru. Rasa cokelat itu hasil percobaan tahun lalu, tapi ternyata kurang laku."],
+   ["n","Bu Wati juga harus memperpanjang izin produksi rumah tangga dan sertifikat halal sebelum masa berlakunya habis. Dina lalu merangkum data yang ia kumpulkan selama seminggu."]
+  ],
+  notes:[
+   {title:"Data masalah", head:["Masalah","Data","Harapan"], rows:[
+    ["Keripik pisang balado 250 g kosong saat dipesan toko oleh-oleh","9 kali dalam 3 bulan","Tidak pernah kosong"],
+    ["Keripik cokelat 100 g kedaluwarsa","120 bungkus bulan lalu (sekitar Rp 1,8 juta)","Tidak ada"],
+    ["Toko oleh-oleh membayar","Rata-rata 26 hari setelah barang diterima","14 hari"],
+    ["Reseller menerima barang","3-4 hari setelah transfer","1 hari"],
+    ["Pesanan marketplace dibatalkan karena stok salah","25 per bulan","0"],
+    ["Kemasan habis sehingga dapur berhenti mengemas","2 kali setahun, masing-masing 2 hari","0"],
+    ["Jadwal dapur berubah mendadak","2-3 kali per minggu","Paling banyak 1 kali"],
+    ["Perawatan mesin","Tidak dilakukan 3 bulan terakhir","Setiap bulan"]]},
+   {title:"Sikap orang terhadap perubahan", head:["Orang","Sikap"], rows:[
+    ["Bu Wati","Ingin perbaikan, tetapi dana hanya cukup untuk satu proyek tahun ini"],
+    ["Mas Rian","Terbuka, mau belajar aplikasi baru"],["Mbak Lia","Terbuka, merasa kewalahan mengecek mutasi bank"],
+    ["Mbak Nia","Terbuka, ingin stok online otomatis"],["Bu Siti","Mendukung, tetapi tidak punya waktu untuk rapat panjang"],
+    ["Pak Darto","Menolak aplikasi baru, lebih nyaman memakai buku"]]}],
+  qs:[
+   ["Masalah reseller (barang lambat dikirim) terjadi di bagian keuangan atau bagian penjualan? Mengapa masalah ini tidak terlihat dari satu bagian saja?","Ikuti perjalanan satu pesanan reseller dari meja ke meja."],
+   ["Keripik balado sering kosong, tetapi keripik cokelat kedaluwarsa. Masalahnya ada di proses mana: menjual, membuat, atau merencanakan?","Siapa yang memutuskan berapa banyak tiap rasa dibuat?"],
+   ["Pembuatan rasa baru dilakukan setahun sekali. Termasuk proses apa? Benda apa yang berpindah di proses ini?","Pikirkan apa yang dihasilkan di akhir proses ini."],
+   ["Perpanjangan izin produksi dan sertifikat halal termasuk proses inti, pendukung, atau manajemen?","Apakah pelanggan membayar untuk izin?"]
+  ],
+  check:{type:"sort", q:"Kelompokkan proses berikut.", items:[["Rapat perencanaan Sabtu",0],["Membuat keripik",1],["Memperpanjang sertifikat halal",2]], labels:["Manajemen","Inti","Pendukung"],
+   why:"Rapat Sabtu mengatur usaha (manajemen), membuat keripik menghasilkan barang yang dibayar pelanggan (inti), dan izin halal membantu usaha tetap berjalan (pendukung)."}
+}
+];
+
+/* ---------- worksheet ---------- */
+var GUIDES = ["G1 flow object berbeda","G2 multiplisitas","G3 status transaksi","G4 pemisahan waktu","G5 pemisahan lokasi","G6 dimensi lain","G7 model referensi","G8 fungsi timpang"];
+var CATS = ["Manajemen","Inti","Pendukung"];
+var WS = [
+ {id:"l1", title:"Daftar proses", intro:"Tulis nama proses dengan pola kata kerja + objek, dari awal sampai akhir. Jangan pakai nama bagian (misalnya \"Gudang\") sebagai nama proses.",
+  cols:[["nama","Nama proses","text"],["mulai","Mulai dari","text"],["akhir","Berakhir di","text"],["kat","Kategori","select",CATS],["adegan","Adegan","text"]],
+  ex:["Membeli pisang dan singkong","Rencana produksi selesai dibuat","Petani dibayar, bahan diterima dapur","Inti","4"]},
+ {id:"l2", title:"Case type", intro:"Tulis setiap properti yang mungkin membedakan kasus, lalu tentukan apakah cara kerjanya berbeda. Pisahkan nilai dengan koma.",
+  cols:[["prop","Properti","text"],["nilai","Nilai-nilainya","text"],["beda","Cara kerja berbeda?","select",["Ya","Tidak"]],["bukti","Bukti (kutip kalimat)","textarea"]],
+  ex:["Rasa","Original, balado, cokelat, pedas","Tidak","\"Rasa apa pun, ukuran berapa pun, cara pesan, cara kirim, cara bayarnya sama\" (Adegan 2)"]},
+ {id:"l3", title:"Fungsi", intro:"Tulis fungsi besar dan fungsi rincinya. Turunkan sampai tingkat orang atau bagian yang mengerjakannya.",
+  cols:[["besar","Fungsi besar","text"],["rinci","Fungsi rinci","text"],["oleh","Dikerjakan oleh","text"]],
+  ex:["Pengadaan","Membeli bahan segar dari petani","Pak Harto"]},
+ {id:"l4", title:"Matriks case/function", custom:"matrix"},
+ {id:"l5", title:"Memecah proses dengan guideline", intro:"Mulai dari anggapan bahwa semua fungsi adalah satu proses besar. Catat setiap pemecahan dan buktinya.",
+  cols:[["g","Guideline","select",GUIDES],["apa","Apa yang dipisah","textarea"],["bukti","Bukti di cerita","textarea"]],
+  ex:["G2 multiplisitas","\"Membuat keripik\" dipisah dari \"Menjual keripik\"","Satu wajan keripik dipakai untuk banyak pesanan (Adegan 3)"]},
+ {id:"l6", title:"Peta proses dan hubungan antarproses", custom:"land"},
+ {id:"l7", title:"Menilai dan memilih prioritas", custom:"eval"},
+ {id:"l8", title:"Process map Level 2", custom:"pmap"}
+];
+
+var STEPS = ["mulai"].concat(SCENES.map(function(s){return s.id})).concat(WS.map(function(w){return w.id})).concat(["selesai"]);
+
+/* ---------- model answers ---------- */
+var QANS = {
+ a1:["Ya, make-to-stock. Buktinya kalimat Bu Wati: \"Dibuat dulu, disimpan di gudang, baru dijual.\"",
+     "(1) Ada barang yang sering kosong dan ada yang menumpuk sampai kedaluwarsa. (2) Toko oleh-oleh telat bayar. (3) Reseller protes barang lama dikirim.",
+     "Menjaga toko oleh-oleh sebagai pelanggan utama dan menggandakan reseller dalam dua tahun. Dananya hanya cukup untuk satu perbaikan tahun ini.",
+     "Menjual (Mas Rian, Mbak Nia), memproduksi (Bu Siti), membeli bahan (Pak Harto), menyimpan dan mengirim barang (Pak Darto), mengelola keuangan (Mbak Lia), merawat mesin (Pak Udin), dan mengembangkan produk (Bu Wati)."],
+ a2:["Tidak. Buktinya: \"Rasa apa pun, ukuran berapa pun, cara pesan, cara kirim, cara bayarnya sama.\" Karena cara kerjanya tidak berbeda, rasa tidak boleh dipakai sebagai case type.",
+     "Ya. Perbedaannya: waktu bayar (belakangan, di muka, atau lewat marketplace), cara pesan (WhatsApp, Google Form, marketplace), dan cara kirim (mobil sendiri, ekspedisi, kurir).",
+     "Case type: Toko oleh-oleh, Reseller, Marketplace (berdasarkan saluran penjualan).",
+     "Nota pengiriman (untuk toko oleh-oleh) dan daftar reseller yang sudah transfer. Keduanya mewakili flow object yang sama: pesanan pelanggan."],
+ a3:["Banyak pesanan. Satu wajan dibagi ke banyak bungkus dan banyak pelanggan. Karena jumlahnya berubah (satu wajan untuk banyak pesanan), proses \"membuat keripik\" dipisah dari \"menjual keripik\" (Guideline 2). Guideline 1 juga berlaku karena flow object-nya berbeda: wajan dan pesanan.",
+     "Guideline 4 (pemisahan waktu): perencanaan berjalan mingguan, sedangkan penjualan berjalan per pesanan.",
+     "Tidak perlu. Porsinya sangat kecil dan hanya hasil sampingan pemeriksaan mutu. Tidak semua perbedaan layak dimasukkan ke peta proses Level 1. Jawaban yang menjadikannya saluran keempat masih bisa diterima bila alasannya jelas.",
+     "Proses pendukung. Pelanggan tidak membayar untuk perawatan mesin, tetapi perawatan membantu proses produksi tetap berjalan."],
+ a4:["Kiriman pisang dan singkong dari petani, belanja minyak dan bumbu, pesanan cetak kemasan, dan kardus kiriman reseller. Yang baru dibanding Adegan 2 dan 3: bahan dari pemasok dan pesanan kemasan (flow object pengadaan).",
+     "Dua proses. Pisang: dari petani, setiap Senin dan Kamis, bayar tunai, harus cepat diolah. Kemasan: dari percetakan, waktu tunggu 2 minggu, pesanan minimum, uang muka, tidak rutin. Pemasok, irama waktu, dan cara bayarnya berbeda.",
+     "Toko oleh-oleh: diambil berdasarkan nota, diantar mobil sendiri setiap Selasa dan Jumat. Reseller: dikemas dalam kardus setelah transfer masuk, dibawa ke ekspedisi setiap siang. Marketplace: diambil dari rak kecil Mbak Nia, dijemput kurir setiap sore.",
+     "Pak Darto menolak aplikasi baru. Ini menurunkan feasibility untuk proses yang melibatkan gudang."],
+ a5:["Orang dalam: Mas Rian, Mbak Lia, Bu Wati, Pak Darto, staf gudang, sopir. Pihak luar: Toko Sari Rasa dan bank.",
+     "Apakah toko punya nota belum dibayar lebih dari 30 hari? (langkah 3). Apakah Bu Wati mengizinkan pengiriman? (3a). Apakah stok cukup? (langkah 5). Apakah toko mau dikirim sebagian? (langkah 6). Apakah ada barang rusak? (langkah 9). Apakah pembayaran sudah masuk? (langkah 13). Sudah lewat 7 hari dari jatuh tempo? (13b).",
+     "Langkah 13 dikerjakan sekaligus untuk banyak toko (Guideline 2) dan dengan irama mingguan (Guideline 4). Jadi pencocokan pembayaran dapat dijadikan proses tersendiri.",
+     "Langkah 8-9 adalah tahap eksekusi (barang diserahkan). Langkah 12-13 adalah tahap penerimaan (pembayaran). Menurut Guideline 3, keduanya bisa dipisah.",
+     "Sisa 15 bungkus hanya dicatat di halaman \"kurang kirim\" di buku Mas Rian. Tidak jelas siapa yang mengingatkan dapur untuk membuatnya atau kapan dikirim. Alur ini belum terdefinisi dan menjadi bahan perbaikan."],
+ a6:["Masalahnya ada di perpindahan antarbagian: Mbak Lia mengecek transfer, Mas Rian menunggu tanda centang, lalu gudang mengirim. Tidak ada satu bagian yang salah sendiri. Karena itu usaha perlu dilihat sebagai proses yang melintasi bagian, bukan per bagian.",
+     "Di proses perencanaan produksi mingguan. Rapat Sabtu belum memakai data penjualan per rasa dengan baik, dan stok di Excel sering terlambat. Masalahnya bukan hanya di penjualan atau dapur.",
+     "Proses inti (mengembangkan produk). Benda yang berpindah adalah resep atau rasa baru, lalu desain kemasan baru. Boleh juga digolongkan manajemen jika alasannya adalah keputusan strategis pemilik.",
+     "Proses pendukung. Izin membantu usaha tetap berjalan, tetapi pelanggan tidak membayar untuk izin."]
+};
+function tblHTML(head, rows){
+  return '<div class="tbl"><table><thead><tr>'+head.map(function(h){return '<th>'+esc(h)+'</th>';}).join("")+'</tr></thead><tbody>'+
+    rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+esc(c)+'</td>';}).join("")+'</tr>';}).join("")+'</tbody></table></div>';
+}
+var MPROC = [
+ ["Merencanakan produksi mingguan","Rapat Sabtu dimulai","Jadwal tertulis di papan dapur","Manajemen","3"],
+ ["Menyusun laporan keuangan bulanan","Akhir bulan","Laporan laba rugi diterima Bu Wati","Manajemen","6"],
+ ["Mengembangkan rasa baru","Ide rasa baru","Kemasan baru siap, produk dijual","Inti","6"],
+ ["Membeli pisang dan singkong","Rencana produksi selesai","Bahan diterima dapur, petani dibayar","Inti","4"],
+ ["Membuat keripik","Bahan siap diolah","Keripik terkemas masuk gudang","Inti","3"],
+ ["Menjual ke toko oleh-oleh","Pesanan WhatsApp masuk","Faktur dan piutang tercatat","Inti","2, 5"],
+ ["Menjual ke reseller","Google Form terisi","Barang diserahkan ke ekspedisi","Inti","2, 4, 6"],
+ ["Menjual di marketplace","Pesanan masuk di marketplace","Paket diserahkan ke kurir","Inti","2, 6"],
+ ["Membeli minyak, bumbu, dan kemasan","Stok terlihat menipis","Bahan diterima dan dibayar","Pendukung","4"],
+ ["Menagih dan mencocokkan pembayaran","Jatuh tempo atau transfer masuk","Faktur tertandai lunas","Pendukung","5, 6"],
+ ["Membayar gaji mingguan","Setiap Sabtu","Gaji diterima karyawan","Pendukung","6"],
+ ["Merawat mesin","Awal bulan","Mesin diperiksa dan dibersihkan","Pendukung","3"],
+ ["Mengurus izin dan sertifikat halal","Masa berlaku hampir habis","Izin diperpanjang","Pendukung","6"]
+];
+function modelLand(){
+  var map={Manajemen:"m",Inti:"i",Pendukung:"p"}, nm={Manajemen:"Proses manajemen",Inti:"Proses inti",Pendukung:"Proses pendukung"};
+  return '<div class="land">'+CATS.map(function(k){
+    return '<div class="band '+map[k]+'"><h4>'+nm[k]+'</h4><div class="cards">'+MPROC.filter(function(r){return r[3]===k;}).map(function(r){return '<span class="card">'+esc(r[0])+'</span>';}).join("")+'</div></div>';
+  }).join("")+'</div>';
+}
+var MX = [["Menerima pesanan",1,1,1],["Memeriksa tunggakan",1,0,0],["Memastikan transfer masuk sebelum kirim",0,1,0],["Merencanakan produksi",1,1,1],
+ ["Membeli bahan segar",1,1,1],["Membeli minyak, bumbu, kemasan",1,1,1],["Mengolah dan memeriksa mutu",1,1,1],["Menyiapkan barang di gudang",1,1,1],
+ ["Mengantar dengan mobil sendiri",1,0,0],["Menyerahkan ke ekspedisi atau kurir",0,1,1],["Membuat faktur",1,0,0],["Menagih dan mencocokkan pembayaran",1,0,1],["Menangani barang rusak",1,0,0]];
+var MSTEPS = [["Menerima dan mencatat pesanan","Mas Rian"],["Memeriksa tunggakan toko","Mas Rian, Mbak Lia"],["Memeriksa stok","Mas Rian, Pak Darto"],["Membuat nota pengiriman","Mas Rian"],
+ ["Menyiapkan dan memuat barang","Staf gudang"],["Mengantar dan meminta tanda tangan","Sopir"],["Membuat faktur dan mencatat piutang","Mbak Lia"],["Menagih dan mencocokkan pembayaran","Mbak Lia"]];
+var WSANS = {
+ l1: function(){ return tblHTML(["Nama proses","Mulai dari","Berakhir di","Kategori","Adegan"], MPROC); },
+ l2: function(){ return tblHTML(["Properti","Nilai","Berbeda?","Bukti"],[
+   ["Rasa","Original, balado, cokelat, pedas","Tidak","Adegan 2: cara pesan, kirim, bayar sama"],
+   ["Ukuran","100 g, 250 g","Tidak","Adegan 2: \"ukuran berapa pun\""],
+   ["Jenis bahan","Pisang, singkong","Tidak","Adegan 4: dibeli \"dengan cara yang sama\""],
+   ["Saluran penjualan","Toko oleh-oleh, reseller, marketplace","Ya","Tabel Adegan 2: cara pesan, bayar, kirim berbeda"]])+
+   '<p>Case type akhir: <b>Toko oleh-oleh, Reseller, Marketplace</b>.</p>'; },
+ l3: function(){ return tblHTML(["Fungsi besar","Fungsi rinci","Dikerjakan oleh"],[
+   ["Perencanaan","Merencanakan produksi","Bu Wati, Bu Siti, Mas Rian"],
+   ["Penjualan","Menerima pesanan toko dan reseller; mengelola marketplace","Mas Rian; Mbak Nia"],
+   ["Pengembangan produk","Membuat rasa baru","Bu Wati"],
+   ["Pengadaan","Membeli bahan segar; membeli minyak, bumbu, kemasan","Pak Harto"],
+   ["Produksi","Mengolah dan memeriksa mutu","Bu Siti dan tim dapur"],
+   ["Pergudangan dan pengiriman","Menyimpan dan menyiapkan barang; mengantar","Pak Darto, staf gudang, sopir"],
+   ["Keuangan","Memeriksa tunggakan; membuat faktur; menagih dan mencocokkan; membayar gaji","Mbak Lia"],
+   ["Pemeliharaan","Merawat mesin","Pak Udin"]]); },
+ l4: function(){ return tblHTML(["Fungsi rinci","Toko oleh-oleh","Reseller","Marketplace"], MX.map(function(r){return [r[0], r[1]?"X":"", r[2]?"X":"", r[3]?"X":""];}))+
+   '<p class="small">Pencocokan pembayaran marketplace terjadi saat dana dicairkan dua minggu sekali.</p>'; },
+ l5: function(){ return tblHTML(["Guideline","Apa yang dipisah","Bukti"],[
+   ["G1 flow object berbeda","Pesanan pelanggan, wajan produksi, kiriman bahan dari petani, pesanan kemasan, resep rasa baru","Adegan 2-6"],
+   ["G2 multiplisitas","Membuat keripik dipisah dari menjual; mencocokkan pembayaran dipisah dari menjual ke toko","Satu wajan untuk banyak pesanan (Adegan 3); cek mutasi semua toko setiap Jumat (Adegan 5)"],
+   ["G3 status transaksi","Menjual ke toko oleh-oleh (eksekusi) dipisah dari menagih (penerimaan)","Adegan 5 langkah 8-9 vs 12-13"],
+   ["G4 pemisahan waktu","Perencanaan mingguan dipisah dari produksi harian; bahan segar (Senin dan Kamis) dipisah dari kemasan (tidak rutin)","Adegan 3 dan 4"],
+   ["G6 dimensi lain (saluran)","Penjualan dipecah menjadi toko oleh-oleh, reseller, marketplace","Tabel Adegan 2"],
+   ["G8 fungsi timpang","Kolom toko oleh-oleh punya lebih banyak fungsi (cek tunggakan, faktur, antar sendiri, barang rusak)","Matriks langkah 4"]])+
+   '<p>Guideline yang tidak berlaku: <b>G5 (lokasi)</b>, karena semua kegiatan ada di satu tempat.</p>'; },
+ l6: function(){ return modelLand()+tblHTML(["Proses penghasil","Hasilnya","Proses pemakai"],[
+   ["Merencanakan produksi mingguan","Jadwal produksi","Membuat keripik"],
+   ["Merencanakan produksi mingguan","Jumlah pisang yang dibeli","Membeli pisang dan singkong"],
+   ["Membeli pisang dan singkong","Bahan segar","Membuat keripik"],
+   ["Membeli minyak, bumbu, dan kemasan","Bahan penolong dan kemasan","Membuat keripik"],
+   ["Membuat keripik","Keripik terkemas di gudang","Ketiga proses penjualan"],
+   ["Menjual ke toko oleh-oleh","Faktur dan catatan piutang","Menagih dan mencocokkan pembayaran"],
+   ["Menagih dan mencocokkan pembayaran","Tanda transfer reseller sudah masuk","Menjual ke reseller"],
+   ["Ketiga proses penjualan","Data penjualan dan stok","Merencanakan produksi mingguan"],
+   ["Mengembangkan rasa baru","Resep dan kemasan baru","Merencanakan produksi mingguan"]]); },
+ l7: function(){ return tblHTML(["Proses","Penting","Bermasalah","Mudah diperbaiki","Bukti"],[
+   ["Menjual ke reseller","5","4","5","Target reseller naik dua kali; kirim 3-4 hari vs 1 hari; Mas Rian dan Mbak Lia terbuka; gudang tidak perlu aplikasi baru"],
+   ["Merencanakan produksi mingguan","5","5","3","Balado kosong 9 kali, cokelat kedaluwarsa; jadwal berubah 2-3 kali per minggu; perlu data stok dari gudang yang menolak aplikasi"],
+   ["Menjual ke toko oleh-oleh","5","3","3","60% penjualan; kurang kirim tanpa alur jelas; melibatkan gudang"],
+   ["Menagih dan mencocokkan pembayaran","4","4","4","Dibayar 26 hari vs 14; Mbak Lia kewalahan"],
+   ["Menjual di marketplace","3","4","4","25 pesanan batal per bulan; Mbak Nia terbuka"],
+   ["Membeli minyak, bumbu, dan kemasan","3","3","5","Kemasan habis 2 kali setahun; cukup diberi batas stok minimum"],
+   ["Merawat mesin","3","3","4","Tidak dirawat 3 bulan, belum ada kerusakan"]])+
+   '<p><b>Pilihan: Menjual ke reseller.</b> Proses ini paling sejalan dengan tujuan Bu Wati, cukup bermasalah, dan paling mudah diperbaiki dengan satu anggaran. Keberhasilannya juga membangun kepercayaan untuk perbaikan berikutnya.</p>'+
+   '<p><b>Pilihan lain yang juga benar: Merencanakan produksi mingguan</b>, karena menjadi akar masalah barang kosong dan kedaluwarsa. Risikonya, proses ini bergantung pada data gudang dan sikap Pak Darto.</p>'; },
+ l8: function(){ return '<div class="pmap">'+MSTEPS.map(function(r,i){return '<div class="pstep">'+(i?'<span class="parr" aria-hidden="true">&#8594;</span>':'')+'<div class="pbox">'+esc(r[0])+'<small>'+esc(r[1])+'</small></div></div>';}).join("")+'</div>'+
+   '<h4>Bahan untuk BPMN di Bizagi nanti</h4>'+tblHTML(["Elemen BPMN","Isi dari Adegan 5"],[
+   ["Pool","UD Renyah Jaya; Toko Oleh-Oleh (pihak luar)"],
+   ["Lane","Mas Rian, Bu Wati, Mbak Lia, Gudang, Sopir"],
+   ["Start event","Pesan WhatsApp dari toko diterima"],
+   ["Gateway","Ada tunggakan lebih dari 30 hari?; Bu Wati mengizinkan?; Stok cukup?; Toko mau dikirim sebagian?; Ada barang rusak?; Pembayaran sudah masuk?"],
+   ["Timer event","Hari antar (Selasa/Jumat); jatuh tempo 14 hari; pencocokan setiap Jumat; 7 hari setelah jatuh tempo"],
+   ["Data object","Buku pesanan, file Excel stok, nota pengiriman, faktur, buku piutang"],
+   ["End event","Pesanan ditunda; Faktur lunas"]]); }
+};
+function modelPanel(id){
+  var f = WSANS[id]; if(!f) return "";
+  return '<details class="model"><summary>Lihat contoh jawaban</summary><div class="model-body">'+f()+'</div></details>';
+}
+
+/* ---------- state ---------- */
+var KEY = "renyahjaya-v1";
+function blank(){ return {step:0, maxStep:0, prof:{nama:"",nim:"",kelompok:""}, ans:{}, chk:{}, ws:{l1:[],l2:[],l3:[],l5:[],l6:[],l8:[], l4:{cols:["","",""], rows:[]}, l7:{sc:{}, pilih:"", alasan:""}}}; }
+var S = blank();
+try { var raw = localStorage.getItem(KEY); if(raw){ var o = JSON.parse(raw); if(o && o.ws){ S = Object.assign(blank(), o); S.ws = Object.assign(blank().ws, o.ws); } } } catch(e){}
+var saveT = null;
+function save(){ clearTimeout(saveT); saveT = setTimeout(function(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }, 250); }
+
+/* ---------- helpers ---------- */
+function esc(t){ return String(t==null?"":t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];}); }
+function gl(t){ return esc(t).replace(/\{\{([^}]+)\}\}/g,function(m,k){ return '<button type="button" class="term" data-term="'+esc(k.toLowerCase())+'">'+esc(k)+'</button>'; }); }
+function $(s,r){ return (r||document).querySelector(s); }
+function toast(t){ var el=$("#toast"); el.textContent=t; el.style.display="block"; clearTimeout(toast.t); toast.t=setTimeout(function(){el.style.display="none";},2200); }
+function procNames(){ return S.ws.l1.map(function(r){return (r.nama||"").trim();}).filter(Boolean); }
+
+document.addEventListener("click", function(e){
+  var t = e.target.closest(".term"); if(!t) return;
+  var nx = t.nextElementSibling;
+  if(nx && nx.classList.contains("def")){ nx.remove(); return; }
+  var d = document.createElement("span"); d.className="def"; d.textContent = GLOS[t.dataset.term] || "";
+  t.insertAdjacentElement("afterend", d);
+});
+
+/* ---------- gating ---------- */
+function sceneDone(sc){
+  var a = S.ans[sc.id] || [];
+  for(var i=0;i<sc.qs.length;i++){ if(!a[i] || a[i].trim().length<8) return false; }
+  var c = S.chk[sc.id];
+  if(sc.check.type==="mc") return c!=null;
+  return c && sc.check.items.every(function(_,i){ return c[i]!=null; });
+}
+function canLeave(i){
+  return true;
+  var id = STEPS[i];
+  var sc = SCENES.find(function(s){return s.id===id;});
+  if(sc) return sceneDone(sc);
+  if(id==="mulai") return S.prof.nama.trim().length>1;
+  return true;
+}
+
+/* ---------- track ---------- */
+function drawTrack(){
+  var tr = $("#track"); tr.innerHTML="";
+  STEPS.forEach(function(id,i){
+    var b = document.createElement("button"); b.type="button";
+    b.className = (i===S.step?"here":(i<=S.maxStep?"done":"")) + ((id==="a1"||id==="l1"||id==="selesai")?" gap":"");
+    b.disabled = i>S.maxStep;
+    b.setAttribute("aria-label", labelOf(id));
+    b.title = labelOf(id);
+    b.addEventListener("click", function(){ go(i); });
+    tr.appendChild(b);
+  });
+  $("#where").textContent = labelOf(STEPS[S.step]);
+}
+function labelOf(id){
+  if(id==="mulai") return "Mulai";
+  if(id==="selesai") return "Kirim jawaban";
+  var si = SCENES.findIndex(function(s){return s.id===id;});
+  if(si>=0) return "Adegan "+(si+1)+" dari 6";
+  var wi = WS.findIndex(function(w){return w.id===id;});
+  return "Lembar kerja "+(wi+1)+" dari 8";
+}
+function go(i){
+  if(i<0||i>=STEPS.length) return;
+  S.step=i; if(i>S.maxStep) S.maxStep=i; save(); render(); window.scrollTo(0,0);
+}
+
+/* ---------- render ---------- */
+function render(){
+  drawTrack();
+  var app = $("#app"); app.innerHTML=""; app.className="";
+  var id = STEPS[S.step];
+  var wrap = document.createElement("div"); wrap.className="enter";
+  if(id==="mulai") renderStart(wrap);
+  else if(id==="selesai") renderEnd(wrap);
+  else {
+    var sc = SCENES.find(function(s){return s.id===id;});
+    if(sc) renderScene(wrap, sc); else renderWS(wrap, WS.find(function(w){return w.id===id;}));
+  }
+  wrap.appendChild(navBar());
+  app.appendChild(wrap);
+}
+
+function navBar(){
+  var n = document.createElement("div"); n.className="nav";
+  var back = document.createElement("button"); back.type="button"; back.className="btn ghost"; back.textContent="Kembali";
+  back.disabled = S.step===0; back.addEventListener("click", function(){ go(S.step-1); });
+  n.appendChild(back);
+  if(S.step<STEPS.length-1){
+    var nx = document.createElement("button"); nx.type="button"; nx.className="btn"; nx.id="nextBtn";
+    nx.textContent = STEPS[S.step]==="mulai" ? "Mulai membaca" : "Lanjut";
+    nx.addEventListener("click", function(){ if(canLeave(S.step)) go(S.step+1); });
+    n.appendChild(nx);
+    var m = document.createElement("p"); m.className="gatemsg"; m.id="gateMsg"; n.appendChild(m);
+  }
+  setTimeout(updateGate,0);
+  return n;
+}
+function updateGate(){
+  var nx = $("#nextBtn"), m = $("#gateMsg"); if(!nx) return;
+  var ok = canLeave(S.step); nx.disabled = !ok;
+  var id = STEPS[S.step];
+  m.textContent = ok ? "" : (id==="mulai" ? "Isi nama Anda dulu." : "Jawab semua pertanyaan pemandu dan cek pemahaman untuk lanjut.");
+}
+
+function renderStart(w){
+  w.innerHTML =
+   '<div class="hero"><div class="chip-pack"><small>Keripik pisang dan singkong</small><strong>Renyah Jaya</strong></div>'+
+   '<h1>Seminggu magang di usaha keripik</h1>'+
+   '<p class="lead">Anda akan mengikuti Dina, mahasiswa Sistem Informasi, yang diminta memetakan cara kerja sebuah usaha keripik. Dari cerita ini Anda akan menemukan proses bisnis usaha tersebut dan memilih proses mana yang paling perlu diperbaiki.</p></div>'+
+   '<h3>Cara memakai halaman ini</h3>'+
+   '<p>Baca satu adegan, coba jawab pertanyaan pemandu, lalu kerjakan cek pemahaman. Setelah mencoba, bandingkan dengan contoh jawaban lewat tombol Lihat jawaban. Setelah enam adegan, Anda mengisi lembar kerja delapan langkah; setiap langkah juga punya contoh jawaban. Di akhir, salin semua jawaban dan kumpulkan sesuai petunjuk dosen.</p>'+
+   '<p>Jawaban tersimpan otomatis di browser ini. Jika pindah perangkat atau menghapus data browser, jawaban tidak ikut. Kata bergaris titik, seperti {{flow object}}, bisa diklik untuk melihat artinya.</p>'.replace(/\{\{([^}]+)\}\}/g,function(m,k){return '<button type="button" class="term" data-term="'+k+'">'+k+'</button>';})+
+   '<div class="fields">'+
+   '<div><label for="pn">Nama</label><input id="pn" autocomplete="name"></div>'+
+   '<div><label for="pi">NIM</label><input id="pi"></div>'+
+   '<div><label for="pk">Kelompok</label><input id="pk"></div></div>';
+  [["pn","nama"],["pi","nim"],["pk","kelompok"]].forEach(function(p){
+    var el = w.querySelector("#"+p[0]); el.value = S.prof[p[1]];
+    el.addEventListener("input", function(){ S.prof[p[1]] = el.value; save(); updateGate(); });
+  });
+}
+
+function noteHTML(nt){
+  return '<div class="note"><h4>Catatan Dina: '+esc(nt.title)+'</h4><div class="tbl"><table><thead><tr>'+
+   nt.head.map(function(h){return '<th>'+esc(h)+'</th>';}).join("")+'</tr></thead><tbody>'+
+   nt.rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+esc(c)+'</td>';}).join("")+'</tr>';}).join("")+
+   '</tbody></table></div></div>';
+}
+
+function renderScene(w, sc){
+  var idx = SCENES.indexOf(sc);
+  var h = '<h2>'+esc(sc.title)+'</h2><p class="where">Adegan '+(idx+1)+'. '+esc(sc.where)+'</p>';
+  sc.blocks.forEach(function(b){
+    if(b[0]==="n") h += '<p class="nar">'+esc(b[1])+'</p>';
+    else if(b[0]==="s"){
+      var p = PEOPLE[b[1]] || {c:"#555",i:"?"};
+      h += '<div class="say'+(b[1]==="Dina"?" me":"")+'"><span class="av" style="background:'+p.c+'" aria-hidden="true">'+p.i+'</span><div class="bub"><span class="who">'+esc(b[1])+'</span>'+esc(b[2])+'</div></div>';
+    } else if(b[0]==="steps"){
+      h += '<ol class="steps">'+b[1].map(function(s,i){
+        return '<li data-n="'+(i+1)+'">'+(s[0]?'<span class="when">'+esc(s[0])+'.</span> ':'')+esc(s[1])+
+          (s[2]?'<ul>'+s[2].map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>':'')+'</li>';
+      }).join("")+'</ol>';
+    }
+  });
+  sc.notes.forEach(function(nt){ h += noteHTML(nt); });
+  h += '<h3>Pertanyaan pemandu</h3><ol class="qs">';
+  sc.qs.forEach(function(q,i){
+    h += '<li class="q"><label for="q'+i+'">'+(i+1)+'. '+gl(q[0])+'</label>'+
+      '<textarea id="q'+i+'" data-i="'+i+'" placeholder="Tulis jawaban Anda"></textarea>'+
+      '<button type="button" class="hintbtn" data-h="'+i+'" aria-expanded="false">Lihat petunjuk</button>'+
+      '<p class="hint" id="h'+i+'" hidden>'+gl(q[1])+'</p>'+
+      ((QANS[sc.id]||[])[i]?'<details class="model"><summary>Lihat jawaban</summary><div class="model-body"><p>'+esc(QANS[sc.id][i])+'</p></div></details>':'')+'</li>';
+  });
+  h += '</ol><div class="check" id="chk"></div>';
+  w.innerHTML = h;
+  var a = S.ans[sc.id] = S.ans[sc.id] || [];
+  w.querySelectorAll(".q textarea").forEach(function(t){
+    var i = +t.dataset.i; t.value = a[i]||"";
+    t.addEventListener("input", function(){ a[i]=t.value; save(); updateGate(); });
+  });
+  w.querySelectorAll(".hintbtn").forEach(function(b){
+    b.addEventListener("click", function(){
+      var p = w.querySelector("#h"+b.dataset.h); p.hidden = !p.hidden;
+      b.setAttribute("aria-expanded", String(!p.hidden)); b.textContent = p.hidden?"Lihat petunjuk":"Sembunyikan petunjuk";
+    });
+  });
+  drawCheck(w.querySelector("#chk"), sc);
+}
+
+function drawCheck(box, sc){
+  var c = sc.check, st = S.chk[sc.id];
+  var h = '<h3>Cek pemahaman</h3><p>'+esc(c.q)+'</p>';
+  if(c.type==="mc"){
+    h += '<div class="opts">'+c.opts.map(function(o,i){
+      var cls = st==null?"":(i===c.a?" right":(i===st?" wrong":""));
+      return '<button type="button" class="opt'+cls+'" data-o="'+i+'" aria-pressed="'+(st===i)+'">'+esc(o)+'</button>';
+    }).join("")+'</div>';
+    if(st!=null) h += st===c.a ? '<p class="fb ok">'+esc(c.why)+'</p>' : '<p class="fb no">Belum tepat. Jawaban yang benar sudah ditandai hijau. '+esc(c.why.replace(/^Benar[,.]\s*/,""))+'</p>';
+  } else {
+    st = st || [];
+    c.items.forEach(function(it,i){
+      h += '<div class="sortrow"><span>'+esc(it[0])+'</span><div class="opts">'+c.labels.map(function(l,j){
+        var cls = st[i]==null?"":(j===it[1]?" right":(j===st[i]?" wrong":""));
+        return '<button type="button" class="opt'+cls+'" data-i="'+i+'" data-j="'+j+'" aria-pressed="'+(st[i]===j)+'">'+esc(l)+'</button>';
+      }).join("")+'</div></div>';
+    });
+    var all = c.items.every(function(_,i){return st[i]!=null;});
+    if(all){
+      var right = c.items.every(function(it,i){return st[i]===it[1];});
+      h += '<p class="fb '+(right?"ok":"no")+'">'+(right?"Tepat semua. ":"Ada yang belum tepat; lihat tanda hijau. ")+esc(c.why)+'</p>';
+    }
+  }
+  box.innerHTML = h;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click", function(){
+      if(c.type==="mc"){ S.chk[sc.id] = +b.dataset.o; }
+      else { var arr = S.chk[sc.id] = S.chk[sc.id] || []; arr[+b.dataset.i] = +b.dataset.j; }
+      save(); drawCheck(box, sc); updateGate();
+    });
+  });
+}
+
+/* ---------- editable table ---------- */
+function editTable(host, rows, cols, ex, opts){
+  opts = opts||{};
+  function draw(){
+    var h = '<div class="ed"><table><thead><tr>'+cols.map(function(c){return '<th>'+esc(c[1])+'</th>';}).join("")+'<th><span class="small">Hapus</span></th></tr></thead><tbody>';
+    if(ex) h += '<tr class="ex">'+ex.map(function(v){return '<td>Contoh: '+esc(v)+'</td>';}).join("")+'<td></td></tr>';
+    rows.forEach(function(r,ri){
+      h += '<tr>'+cols.map(function(c){
+        var v = r[c[0]]||"", lab = 'aria-label="'+esc(c[1])+' baris '+(ri+1)+'"';
+        if(c[2]==="select"){
+          var op = typeof c[3]==="function" ? c[3]() : c[3];
+          return '<td><select data-r="'+ri+'" data-k="'+c[0]+'" '+lab+'><option value="">Pilih</option>'+op.map(function(o){return '<option'+(o===v?" selected":"")+'>'+esc(o)+'</option>';}).join("")+'</select></td>';
+        }
+        if(c[2]==="textarea") return '<td><textarea data-r="'+ri+'" data-k="'+c[0]+'" '+lab+'>'+esc(v)+'</textarea></td>';
+        return '<td><input data-r="'+ri+'" data-k="'+c[0]+'" value="'+esc(v)+'" '+lab+'></td>';
+      }).join("")+'<td><div class="row-actions">'+
+        (opts.order?'<button type="button" class="del" data-up="'+ri+'" aria-label="Naikkan baris '+(ri+1)+'" style="color:var(--ink)">&#8593;</button>':'')+
+        '<button type="button" class="del" data-del="'+ri+'" aria-label="Hapus baris '+(ri+1)+'">&times;</button></div></td></tr>';
+    });
+    h += '</tbody></table></div><button type="button" class="add">Tambah baris</button>';
+    host.innerHTML = h;
+    host.querySelectorAll("input,select,textarea").forEach(function(el){
+      el.addEventListener(el.tagName==="SELECT"?"change":"input", function(){
+        rows[+el.dataset.r][el.dataset.k] = el.value; save(); if(opts.onChange) opts.onChange();
+      });
+    });
+    host.querySelectorAll("[data-del]").forEach(function(b){ b.addEventListener("click", function(){ rows.splice(+b.dataset.del,1); save(); draw(); if(opts.onChange) opts.onChange(); }); });
+    host.querySelectorAll("[data-up]").forEach(function(b){ b.addEventListener("click", function(){ var i=+b.dataset.up; if(i>0){ var t=rows[i-1]; rows[i-1]=rows[i]; rows[i]=t; save(); draw(); if(opts.onChange) opts.onChange(); } }); });
+    host.querySelector(".add").addEventListener("click", function(){ var o={}; cols.forEach(function(c){o[c[0]]="";}); rows.push(o); save(); draw(); if(opts.onChange) opts.onChange(); var ins=host.querySelectorAll("tbody tr:last-child input, tbody tr:last-child textarea"); if(ins[0]) ins[0].focus(); });
+  }
+  if(!rows.length){ var o={}; cols.forEach(function(c){o[c[0]]="";}); rows.push(o); }
+  draw();
+}
+
+function renderWS(w, ws){
+  var n = WS.indexOf(ws)+1;
+  w.innerHTML = '<h2>'+esc(ws.title)+'</h2><p class="where">Lembar kerja, langkah '+n+' dari 8</p>';
+  var body = document.createElement("div"); w.appendChild(body);
+  if(!ws.custom){
+    body.innerHTML = '<p>'+esc(ws.intro)+'</p><div id="t"></div>';
+    editTable(body.querySelector("#t"), S.ws[ws.id], ws.cols, ws.ex);
+    if(ws.id==="l1") body.insertAdjacentHTML("beforeend",'<p class="small">Daftar ini dipakai lagi di langkah 6 (peta proses) dan langkah 7 (penilaian).</p>');
+  }
+  else if(ws.custom==="matrix") renderMatrix(body);
+  else if(ws.custom==="land") renderLand(body);
+  else if(ws.custom==="eval") renderEval(body);
+  else if(ws.custom==="pmap") renderPmap(body);
+  var mp = document.createElement("div"); mp.innerHTML = modelPanel(ws.id); w.appendChild(mp);
+}
+
+function renderMatrix(b){
+  var M = S.ws.l4;
+  function draw(){
+    var h = '<p>Isi nama case type di kepala kolom, lalu tambahkan fungsi rinci sebagai baris. Klik kotak untuk memberi tanda X jika fungsi dilakukan untuk case type itu.</p>'+
+     '<p><button type="button" class="add" id="fromL2">Isi kolom dari langkah 2</button> <button type="button" class="add" id="fromL3">Isi baris dari langkah 3</button></p>'+
+     '<div class="ed mx"><table><thead><tr><th>Fungsi rinci</th>'+
+     M.cols.map(function(c,i){return '<th><input data-col="'+i+'" value="'+esc(c)+'" placeholder="Case type '+(i+1)+'" aria-label="Case type '+(i+1)+'"></th>';}).join("")+
+     '<th></th></tr></thead><tbody><tr class="ex"><td>Contoh: Menerima pesanan</td>'+M.cols.map(function(){return '<td class="cell">X</td>';}).join("")+'<td></td></tr>';
+    M.rows.forEach(function(r,ri){
+      h += '<tr><td><input data-row="'+ri+'" value="'+esc(r.f)+'" aria-label="Fungsi baris '+(ri+1)+'"></td>'+
+        M.cols.map(function(c,ci){ return '<td class="cell"><button type="button" class="x" data-x="'+ri+','+ci+'" aria-pressed="'+(!!r.x[ci])+'" aria-label="'+esc((r.f||"Fungsi")+" untuk "+(c||"case type "+(ci+1)))+'">'+(r.x[ci]?"X":"")+'</button></td>'; }).join("")+
+        '<td><button type="button" class="del" data-del="'+ri+'" aria-label="Hapus baris">&times;</button></td></tr>';
+    });
+    h += '</tbody></table></div><button type="button" class="add" id="addR">Tambah fungsi</button> '+
+      (M.cols.length<5?'<button type="button" class="add" id="addC">Tambah kolom</button>':'');
+    b.innerHTML = h;
+    b.querySelectorAll("[data-col]").forEach(function(el){ el.addEventListener("input", function(){ M.cols[+el.dataset.col]=el.value; save(); }); });
+    b.querySelectorAll("[data-row]").forEach(function(el){ el.addEventListener("input", function(){ M.rows[+el.dataset.row].f=el.value; save(); }); });
+    b.querySelectorAll("[data-x]").forEach(function(el){ el.addEventListener("click", function(){ var p=el.dataset.x.split(","), r=M.rows[+p[0]]; r.x[+p[1]]=!r.x[+p[1]]; save(); el.textContent=r.x[+p[1]]?"X":""; el.setAttribute("aria-pressed", String(!!r.x[+p[1]])); }); });
+    b.querySelectorAll("[data-del]").forEach(function(el){ el.addEventListener("click", function(){ M.rows.splice(+el.dataset.del,1); save(); draw(); }); });
+    b.querySelector("#addR").addEventListener("click", function(){ M.rows.push({f:"",x:[]}); save(); draw(); });
+    var ac = b.querySelector("#addC"); if(ac) ac.addEventListener("click", function(){ M.cols.push(""); save(); draw(); });
+    b.querySelector("#fromL2").addEventListener("click", function(){
+      var vals=[]; S.ws.l2.forEach(function(r){ if(r.beda==="Ya") (r.nilai||"").split(",").forEach(function(v){ v=v.trim(); if(v) vals.push(v); }); });
+      if(!vals.length){ toast("Belum ada properti bertanda Ya di langkah 2"); return; }
+      M.cols = vals.slice(0,5); save(); draw();
+    });
+    b.querySelector("#fromL3").addEventListener("click", function(){
+      var have = M.rows.map(function(r){return r.f.trim().toLowerCase();}), added=0;
+      S.ws.l3.forEach(function(r){ (r.rinci||"").split(";").forEach(function(v){ v=v.trim(); if(v && have.indexOf(v.toLowerCase())<0){ M.rows.push({f:v,x:[]}); have.push(v.toLowerCase()); added++; } }); });
+      toast(added? added+" fungsi ditambahkan" : "Tidak ada fungsi baru dari langkah 3"); save(); draw();
+    });
+  }
+  draw();
+}
+
+function landHTML(){
+  var groups = {Manajemen:[],Inti:[],Pendukung:[]}, none=[];
+  S.ws.l1.forEach(function(r){ var n=(r.nama||"").trim(); if(!n) return; if(groups[r.kat]) groups[r.kat].push(n); else none.push(n); });
+  var map = {Manajemen:["m","Proses manajemen"],Inti:["i","Proses inti"],Pendukung:["p","Proses pendukung"]};
+  var h = '<div class="land" role="img" aria-label="Peta proses Level 1">'+CATS.map(function(k){
+    return '<div class="band '+map[k][0]+'"><h4>'+map[k][1]+'</h4><div class="cards">'+
+      (groups[k].length? groups[k].map(function(n){return '<span class="card">'+esc(n)+'</span>';}).join("") : '<span class="empty">Belum ada. Tambahkan di langkah 1.</span>')+'</div></div>';
+  }).join("")+'</div>';
+  if(none.length) h += '<p class="warn">Belum diberi kategori: '+none.map(esc).join(", ")+'. Pilih kategorinya di langkah 1.</p>';
+  return h;
+}
+
+function renderLand(b){
+  b.innerHTML = '<p>Peta ini tersusun otomatis dari langkah 1. Warnanya mengikuti nota rangkap: putih untuk manajemen, kuning untuk inti, merah muda untuk pendukung. Jika ada proses baru dari langkah 5, tambahkan dulu di langkah 1.</p>'+
+    landHTML()+'<h3>Hubungan antarproses</h3><p>Tulis proses mana yang menghasilkan sesuatu untuk dipakai proses lain.</p><div id="t"></div>';
+  var names = function(){ return procNames(); };
+  editTable(b.querySelector("#t"), S.ws.l6, [["dari","Proses penghasil","select",names],["hasil","Hasilnya","text"],["ke","Proses pemakai","select",names]],
+    ["Merencanakan produksi mingguan","Jadwal produksi di papan tulis","Membuat keripik"]);
+}
+
+function renderEval(b){
+  var E = S.ws.l7, names = procNames();
+  if(!names.length){ b.innerHTML = '<p class="warn">Daftar proses masih kosong. Isi langkah 1 dulu, lalu kembali ke sini.</p>'; return; }
+  function draw(){
+    var h = '<p>Beri nilai 1 (rendah) sampai 5 (tinggi) untuk setiap proses. Untuk {{feasibility}}, nilai tinggi berarti mudah diperbaiki.</p>'.replace(/\{\{([^}]+)\}\}/g,function(m,k){return '<button type="button" class="term" data-term="'+k+'">'+k+'</button>';})+
+      '<div class="ecard ex"><b>Contoh: Merawat mesin</b><p class="small" style="margin:4px 0 0">Penting 3, bermasalah 3, mudah diperbaiki 4. Bukti: tidak dirawat 3 bulan tetapi belum ada kerusakan; hanya melibatkan Pak Udin dan Bu Siti.</p></div>';
+    var LAB = {i:"Penting?",d:"Bermasalah?",f:"Mudah diperbaiki?"};
+    names.forEach(function(n,ni){
+      var s = E.sc[n] = E.sc[n] || {i:0,d:0,f:0,b:""};
+      h += '<div class="ecard"><b>'+esc(n)+'</b>'+["i","d","f"].map(function(k){
+        return '<div class="erow"><span>'+LAB[k]+'</span><div class="seg" role="group" aria-label="'+LAB[k]+' '+esc(n)+'">'+[1,2,3,4,5].map(function(v){return '<button type="button" data-n="'+ni+'" data-k="'+k+'" data-v="'+v+'" aria-pressed="'+(s[k]===v)+'">'+v+'</button>';}).join("")+'</div></div>';
+      }).join("")+'<textarea data-b="'+ni+'" placeholder="Bukti dari cerita" aria-label="Bukti '+esc(n)+'">'+esc(s.b)+'</textarea></div>';
+    });
+    h += '<h3>Urutan sementara</h3><p class="small">Diurutkan dari jumlah ketiga nilai. Ini hanya alat bantu: buku menekankan bahwa ketiga kriteria harus ditimbang, bukan dijumlah begitu saja.</p><ol class="rank" id="rank"></ol>'+
+      '<h3>Keputusan Anda</h3><div class="fields"><div><label for="pil">Proses yang dipilih</label><select id="pil" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:9px;background:var(--surface)"><option value="">Pilih</option>'+
+      names.map(function(n){return '<option'+(n===E.pilih?" selected":"")+'>'+esc(n)+'</option>';}).join("")+'</select></div></div>'+
+      '<label for="alas" style="font-weight:700">Alasan (3-5 kalimat, sebutkan ketiga kriteria dan risikonya)</label><textarea id="alas" class="bigtext">'+esc(E.alasan)+'</textarea>';
+    b.innerHTML = h;
+    b.querySelectorAll(".seg button").forEach(function(el){ el.addEventListener("click", function(){
+      var s = E.sc[names[+el.dataset.n]]; s[el.dataset.k] = +el.dataset.v; save();
+      el.parentNode.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", String(x===el)); });
+      drawRank();
+    }); });
+    b.querySelectorAll("[data-b]").forEach(function(el){ el.addEventListener("input", function(){ E.sc[names[+el.dataset.b]].b = el.value; save(); }); });
+    b.querySelector("#pil").addEventListener("change", function(e){ E.pilih = e.target.value; save(); });
+    b.querySelector("#alas").addEventListener("input", function(e){ E.alasan = e.target.value; save(); });
+    drawRank();
+  }
+  function drawRank(){
+    var list = names.map(function(n){ var s=E.sc[n]; return {n:n, t:(s.i||0)+(s.d||0)+(s.f||0), done:s.i&&s.d&&s.f}; }).sort(function(a,z){return z.t-a.t;});
+    b.querySelector("#rank").innerHTML = list.map(function(x){
+      return '<li><span>'+esc(x.n)+(x.done?"":' <span class="small">(belum lengkap)</span>')+'</span><span class="bar"><i style="width:'+(x.t/15*100)+'%"></i></span><b>'+x.t+'</b></li>';
+    }).join("");
+  }
+  draw();
+}
+
+function renderPmap(b){
+  b.innerHTML = '<p>Untuk alur di Adegan 5, tulis langkah utama secara berurutan dan siapa yang mengerjakan. Jangan tulis cabang \"jika ... maka ...\" dulu; itu dikerjakan nanti dengan BPMN di Bizagi. Pakai tombol panah untuk mengubah urutan.</p><div id="t"></div><h3>Pratinjau</h3><div class="pmap" id="pv" aria-label="Pratinjau process map"></div>';
+  function pv(){
+    var rows = S.ws.l8.filter(function(r){return (r.langkah||"").trim();});
+    b.querySelector("#pv").innerHTML = rows.length ? rows.map(function(r,i){
+      return '<div class="pstep">'+(i?'<span class="parr" aria-hidden="true">&#8594;</span>':'')+'<div class="pbox">'+esc(r.langkah)+'<small>'+esc(r.oleh||"?")+'</small></div></div>';
+    }).join("") : '<p class="small">Pratinjau muncul setelah Anda menulis langkah.</p>';
+  }
+  editTable(b.querySelector("#t"), S.ws.l8, [["langkah","Langkah utama","text"],["oleh","Dikerjakan oleh","text"]], ["Menerima dan mencatat pesanan","Mas Rian"], {order:true, onChange:pv});
+  pv();
+}
+
+/* ---------- summary ---------- */
+function rowsText(rows, cols){
+  var r = rows.filter(function(x){ return cols.some(function(c){ return (x[c[0]]||"").trim(); }); });
+  if(!r.length) return "  (kosong)\n";
+  return r.map(function(x,i){ return "  "+(i+1)+". "+cols.map(function(c){return c[1]+": "+(x[c[0]]||"-");}).join(" | "); }).join("\n")+"\n";
+}
+function buildSummary(){
+  var t = "KASUS CERITA UD RENYAH JAYA\nNama: "+S.prof.nama+"\nNIM: "+S.prof.nim+"\nKelompok: "+S.prof.kelompok+"\n\n";
+  SCENES.forEach(function(sc,si){
+    t += "ADEGAN "+(si+1)+": "+sc.title+"\n";
+    sc.qs.forEach(function(q,i){ t += (i+1)+". "+q[0].replace(/\{\{|\}\}/g,"")+"\n   Jawaban: "+((S.ans[sc.id]||[])[i]||"-")+"\n"; });
+    t += "\n";
+  });
+  t += "LEMBAR KERJA\n\n";
+  WS.forEach(function(ws,wi){
+    t += "Langkah "+(wi+1)+": "+ws.title+"\n";
+    if(ws.cols) t += rowsText(S.ws[ws.id], ws.cols);
+    else if(ws.custom==="matrix"){
+      var M=S.ws.l4; t += "  Kolom: "+M.cols.map(function(c){return c||"-";}).join(" | ")+"\n";
+      t += M.rows.length? M.rows.map(function(r){ return "  "+(r.f||"-")+": "+M.cols.map(function(c,ci){return r.x[ci]?"X":".";}).join(" "); }).join("\n")+"\n" : "  (kosong)\n";
+    }
+    else if(ws.custom==="land"){
+      CATS.forEach(function(k){ t += "  "+k+": "+(S.ws.l1.filter(function(r){return r.kat===k&&(r.nama||"").trim();}).map(function(r){return r.nama;}).join("; ")||"-")+"\n"; });
+      t += "  Hubungan:\n"+rowsText(S.ws.l6,[["dari","Penghasil"],["hasil","Hasil"],["ke","Pemakai"]]);
+    }
+    else if(ws.custom==="eval"){
+      var E=S.ws.l7; procNames().forEach(function(n){ var s=E.sc[n]||{}; t += "  "+n+": I="+(s.i||"-")+" D="+(s.d||"-")+" F="+(s.f||"-")+" | Bukti: "+(s.b||"-")+"\n"; });
+      t += "  Pilihan: "+(E.pilih||"-")+"\n  Alasan: "+(E.alasan||"-")+"\n";
+    }
+    else if(ws.custom==="pmap") t += rowsText(S.ws.l8,[["langkah","Langkah"],["oleh","Oleh"]]);
+    t += "\n";
+  });
+  return t;
+}
+function renderEnd(w){
+  var miss = SCENES.filter(function(s){return !sceneDone(s);}).map(function(s,i){return s.title;});
+  w.innerHTML = '<h2>Kumpulkan jawaban</h2><p class="where">Langkah terakhir</p>'+
+    '<p>Semua jawaban Anda sudah disusun di kotak di bawah. Klik Salin jawaban, lalu tempel di tempat pengumpulan yang ditentukan dosen (misalnya LMS atau Google Form).</p>'+
+    (miss.length?'<p class="warn">Adegan yang belum lengkap: '+miss.map(esc).join(", ")+'.</p>':'')+
+    '<p><button type="button" class="btn" id="cp">Salin jawaban</button></p>'+
+    '<textarea class="summary" id="sum" readonly aria-label="Ringkasan jawaban"></textarea>'+
+    '<h3>Mulai dari awal</h3><p>Menghapus semua jawaban di browser ini. Salin jawaban dulu jika masih diperlukan.</p><button type="button" class="btn ghost" id="rs">Hapus semua jawaban</button>';
+  var ta = w.querySelector("#sum"); ta.value = buildSummary();
+  w.querySelector("#cp").addEventListener("click", function(){
+    var done = function(){ toast("Jawaban disalin"); };
+    var fallback = function(){ ta.focus(); ta.select(); var ok=false; try{ ok=document.execCommand("copy"); }catch(e){} if(ok) done(); else toast("Tidak bisa menyalin otomatis. Blok teks di kotak lalu salin manual."); };
+    try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(ta.value).then(done, fallback); } else fallback(); }catch(e){ fallback(); }
+  });
+  w.querySelector("#rs").addEventListener("click", function(){
+    if(!confirm("Hapus semua jawaban di browser ini?")) return;
+    S = blank(); try{ localStorage.removeItem(KEY); }catch(e){} render(); window.scrollTo(0,0); toast("Semua jawaban dihapus");
+  });
+}
+
+try{ if(/github\.io$/.test(location.hostname)) document.getElementById("home").hidden=false; }catch(e){}
+render();
+})();
+</script>
+</body>
+</html>
